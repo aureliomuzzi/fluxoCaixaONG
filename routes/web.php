@@ -13,25 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'web'], function() {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+    Auth::routes();
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
 });
 
-Route::get('empresas','EmpresaController@index');
+Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'index'])->middleware('auth');
+Route::get('/usuarios/new', [App\Http\Controllers\UsuariosController::class, 'new'])->middleware('auth');
+Route::post('/usuarios/add', [App\Http\Controllers\UsuariosController::class, 'add'])->middleware('auth');
+Route::get('/usuarios/{id}/edit', [App\Http\Controllers\UsuariosController::class, 'edit'])->middleware('auth');
+Route::post('/usuarios/update/{id}', [App\Http\Controllers\UsuariosController::class, 'update'])->middleware('auth');
+Route::delete('/usuarios/delete/{id}', [App\Http\Controllers\UsuariosController::class, 'delete'])->middleware('auth');
 
+Route::get('/empresas', [App\Http\Controllers\EmpresasController::class, 'index']);
 
-/* Route::get('/model', function () {
-    //$empresas = \App\Models\Empresa::all();
-    //return $empresas;
-
-    $empresa = new \App\Models\Empresa();
-    $empresa->cliente = 0;
-    $empresa->fornecedor = 1;
-    $empresa->razaoSocial = 'Distribuidora Melo';
-    $empresa->cnpj = '2222222222';
-    $empresa->responsavel = 'Karem';
-
-    $empresa->save();
-
-    return \App\Models\Empresa::all();
-}); */
+Route::get('/movimentos', [App\Http\Controllers\MovimentosController::class, 'index']);
