@@ -14,18 +14,19 @@
                         </div>
                     @endif
 
-                    <h1> Sistema Fluxo de Caixa da ONG </h1>
+                    <h1 class="text-center"> Sistema Fluxo de Caixa da ONG </h1>
 
-                    <a href="{{ url('usuarios') }}">Lista dos Usuarios</a>
-
-                    <br>
-
-                    <a href="{{ url('empresas') }}">Lista de Empresas</a>
-
-                    <br>
-                    
-                    <a href="{{ url('movimentos') }}">Lista de Movimentos</a>
-
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="{{ url('usuarios') }}" class="btn btn-outline-primary">Lista dos Usuarios</a>
+                        </div>
+                        <div class="col-4">
+                            <a href="{{ url('empresas') }}" class="btn btn-outline-primary">Lista de Empresas</a>
+                        </div>
+                        <div class="col-4">
+                            <a href="{{ url('movimentos') }}" class="btn btn-outline-primary">Lista de Movimentos</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

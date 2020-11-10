@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">
+                    <a href="{{ url('/') }}" class="btn btn-outline-primary">Voltar</a>
+                    <a href="{{ url('movimentos/new') }}" class="btn btn-outline-secondary">Novo Movimento</a>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,9 +18,37 @@
                     @endif
 
                     <h1> Lista de Movimentos </h1>
-                    @foreach($movimentos as $m)
-                        <p> {{ $m->tipo }} | {{ $m->empresa_id }} | {{ $m->valor }}</p>
-                    @endforeach
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tipo de Movimento</th>
+                            <th scope="col">Empresa</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($movimentos as $m)
+                            <tr>
+                            <th scope="row">{{ $m->id }}</th>
+                            <td>{{ $m->tipo }}</td>
+                            <td>{{ $m->empresa_id }}</td>
+                            <td>{{ $m->valor }}</td>
+                            <td>
+                                <a href="movimentos/{{ $m->id }}/edit" class="btn btn-outline-info">Editar</a>
+                            </td>
+                            <td>
+                                <form action="movimentos/delete/{{ $m->id }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-outline-danger">Deletar</button>
+                                </form>
+                            </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

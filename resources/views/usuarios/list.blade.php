@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><a href="{{ url('usuarios/new') }}">Novo Usuario</a></div>
+                <div class="card-header">
+                    <a href="{{ url('/') }}" class="btn btn-outline-primary">Voltar</a>
+                    <a href="{{ url('usuarios/new') }}" class="btn btn-outline-secondary">Novo Usuario</a>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
