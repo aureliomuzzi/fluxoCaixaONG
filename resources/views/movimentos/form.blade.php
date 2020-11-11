@@ -22,8 +22,9 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tipo:</label>
-                                    <input type="text" name="tipo" class="form-control" value="{{ $movimento->tipo }}">
+                                    <label for="exampleInputEmail1">Tipo de Movimento</label>
+                                <p><input type="radio" name="tipo" value= "R" {{ $movimento->tipo == 'R' ? 'checked' : '' }}> Receita</p>
+                                <p><input type="radio" name="tipo" value= "C" {{ $movimento->tipo == 'C' ? 'checked' : '' }}> Custo</p>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -48,8 +49,9 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tipo:</label>
-                                    <input type="text" name="tipo" class="form-control">
+                                <label for="exampleInputEmail1">Tipo de Movimento</label>
+                                <p><input type="radio" name="tipo" value= "R"> Receita</p>
+                                <p><input type="radio" name="tipo" value= "C"> Custo</p>
                                 </div>
                             </div>
                             <div class="col-4">

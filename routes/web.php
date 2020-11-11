@@ -42,3 +42,6 @@ Route::post('/movimentos/add', [App\Http\Controllers\MovimentosController::class
 Route::get('/movimentos/{id}/edit', [App\Http\Controllers\MovimentosController::class, 'edit'])->middleware('auth');
 Route::post('/movimentos/update/{id}', [App\Http\Controllers\MovimentosController::class, 'update'])->middleware('auth');
 Route::delete('/movimentos/delete/{id}', [App\Http\Controllers\MovimentosController::class, 'delete'])->middleware('auth');
+
+//Rota de Relatorio
+Route::get('/relatorios', [App\Http\Controllers\RelatoriosController::class, 'index'])->middleware('auth');

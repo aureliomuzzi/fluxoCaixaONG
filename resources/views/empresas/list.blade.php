@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <a href="{{ url('/') }}" class="btn btn-outline-primary">Voltar</a>
@@ -32,8 +32,20 @@
                         @foreach($empresas as $e)
                             <tr>
                             <th scope="row">{{ $e->id }}</th>
-                            <td>{{ $e->cliente }}</td>
-                            <td>{{ $e->fornecedor }}</td>
+                            <td>
+                                @if($e->cliente == 1)
+                                    <b>Ativo</b>
+                                @else
+                                    <b>Inativo</b>
+                                @endif
+                            </td>
+                            <td>
+                                @if($e->fornecedor == 1)
+                                    <b>Ativo</b>
+                                @else
+                                    <b>Inativo</b>
+                                @endif
+                            </td>
                             <td>{{ $e->razaoSocial }}</td>
                             <td>{{ $e->cnpj }}</td>
                             <td>

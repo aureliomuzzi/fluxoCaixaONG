@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-left">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
@@ -32,7 +32,13 @@
                         @foreach($movimentos as $m)
                             <tr>
                             <th scope="row">{{ $m->id }}</th>
-                            <td>{{ $m->tipo }}</td>
+                            <td>
+                                @if($m->tipo == 'R')
+                                    <b>Receita</b>
+                                @else
+                                    <b>Custo</b>
+                                @endif
+                            </td>
                             <td>{{ $m->empresa_id }}</td>
                             <td>{{ $m->valor }}</td>
                             <td>
@@ -52,6 +58,27 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3> Resumo de Caixa </h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">Receitas</th>
+                            <th scope="col">Custos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                            <td>{{ $receitas }}</td>
+                            <td>{{ $custos }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> 
 </div>
 @endsection

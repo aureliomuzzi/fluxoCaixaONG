@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Redirect;
 use App\Models\Movimento;
@@ -11,7 +11,20 @@ class MovimentosController extends Controller
     public function index(){
 
         $movimentos = Movimento::get();
-        return view('movimentos.list', ['movimentos' => $movimentos]);
+        
+        $receitas = DB::table('movimentos')
+                ->where('tipo', '=', "R")
+                ->sum('valor');
+        
+        $custos = DB::table('movimentos')
+                ->where('tipo', '=', "C")
+                ->sum('valor');
+
+        return view('movimentos.list', [
+            'movimentos' => $movimentos,
+            'receitas' => $receitas,
+            'custos' => $custos
+        ]);
     }
 
     public function new(){

@@ -22,14 +22,17 @@
                         <div class="row">
                             <div class="col-2">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Cliente:</label>
-                                    <input type="text" name="cliente" class="form-control" value="{{ $empresa->cliente }}">
+                                    <label for="exampleInputEmail1">Cliente</label>
+                                    <p><input type="radio" name="cliente" value= 1 {{ $empresa->cliente == 1 ? 'checked' : '' }}> Ativo</p>
+                                    <p><input type="radio" name="cliente" value= 0 {{ $empresa->cliente == 0 ? 'checked' : '' }}> Inativo</p>
                                 </div>
+                                
                             </div>
                             <div class="col-2">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Fornecedor:</label>
-                                    <input type="text" name="fornecedor" class="form-control" value="{{ $empresa->fornecedor }}">
+                                    <label for="exampleInputEmail1">Fornecedor</label>
+                                <p><input type="radio" name="fornecedor" value= 1 {{ $empresa->fornecedor == 1 ? 'checked' : '' }}> Ativo</p>
+                                <p><input type="radio" name="fornecedor" value= 0 {{ $empresa->fornecedor == 0 ? 'checked' : '' }}> Inativo</p>
                                 </div>
                             </div>
                             <div class="col-8">
@@ -63,14 +66,16 @@
                         <div class="row">
                             <div class="col-2">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Cliente:</label>
-                                    <input type="text" name="cliente" class="form-control">
+                                    <label for="exampleInputEmail1">Cliente</label>
+                                    <p><input type="radio" name="cliente" value= 1 > Ativo</p>
+                                    <p><input type="radio" name="cliente" value= 0 > Inativo</p>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Fornecedor:</label>
-                                    <input type="text" name="fornecedor" class="form-control">
+                                    <label for="exampleInputEmail1">Fornecedor</label>
+                                    <p><input type="radio" name="fornecedor" value= 1 > Ativo</p>
+                                    <p><input type="radio" name="fornecedor" value= 0 > Inativo</p>
                                 </div>
                             </div>
                             <div class="col-8">
