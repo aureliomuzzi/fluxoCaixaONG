@@ -5,12 +5,15 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Redirect;
 use App\Models\Movimento;
+use App\Models\Empresa;
+
 
 class MovimentosController extends Controller
 {
     public function index(){
 
         $movimentos = Movimento::get();
+        $empresas = Empresa::get();
         
         $receitas = DB::table('movimentos')
                 ->where('tipo', '=', "R")
@@ -19,16 +22,23 @@ class MovimentosController extends Controller
         $custos = DB::table('movimentos')
                 ->where('tipo', '=', "C")
                 ->sum('valor');
-
+      
         return view('movimentos.list', [
             'movimentos' => $movimentos,
             'receitas' => $receitas,
-            'custos' => $custos
+            'custos' => $custos,
+            'empresas' => $empresas
         ]);
     }
 
+
     public function new(){
-        return view('movimentos.form');
+        $movimentos = Movimento::get();
+        $empresas = Empresa::get();
+        return view('movimentos.form', [
+            'movimentos' => $movimentos,
+            'empresas' => $empresas
+        ]);
     }
 
     public function add(Request $request){
@@ -39,7 +49,11 @@ class MovimentosController extends Controller
 
     public function edit( $id ){
         $movimento = Movimento::findOrFail( $id );
-        return view('movimentos.form', ['movimento' => $movimento]);
+        $empresas = Empresa::get();
+        return view('movimentos.form', [
+            'movimento' => $movimento,
+            'empresas' => $empresas
+        ]);
     }
 
     public function update( $id, Request $request){

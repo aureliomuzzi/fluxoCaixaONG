@@ -23,14 +23,20 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tipo de Movimento</label>
-                                <p><input type="radio" name="tipo" value= "R" {{ $movimento->tipo == 'R' ? 'checked' : '' }}> Receita</p>
-                                <p><input type="radio" name="tipo" value= "C" {{ $movimento->tipo == 'C' ? 'checked' : '' }}> Custo</p>
+                                <p><input type="radio" name="tipo" value= "R" disabled="true" {{ $movimento->tipo == 'R' ? 'checked' : '' }}> Receita</p>
+                                <p><input type="radio" name="tipo" value= "C" disabled="true" {{ $movimento->tipo == 'C' ? 'checked' : '' }}> Custo</p>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Empresa:</label>
-                                    <input type="text" name="empresa_id" class="form-control" value="{{ $movimento->empresa_id }}">
+                                    <select name="empresa_id" class="form-control" disabled="true">
+                                        @foreach($empresas as $e)
+                                            @if($e->id == $movimento->empresa_id)
+                                                <option value="{{ $movimento->empresa_id }}">{{ $e->razaoSocial }}</option>
+                                            @endif
+                                        @endforeach    
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -57,7 +63,11 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Empresa:</label>
-                                    <input type="text" name="empresa_id" class="form-control">
+                                    <select name="empresa_id" class="form-control">
+                                        @foreach($empresas as $e)
+                                            <option value="{{ $e->id }}">{{ $e->razaoSocial }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-4">

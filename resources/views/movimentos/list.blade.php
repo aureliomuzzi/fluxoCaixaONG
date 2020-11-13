@@ -23,7 +23,7 @@
                             <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tipo de Movimento</th>
-                            <th scope="col">Empresa</th>
+                            <th scope="col">Nome Empresa</th>
                             <th scope="col">Valor</th>
                             <th scope="col">Ações</th>
                             </tr>
@@ -39,7 +39,13 @@
                                     <b>Custo</b>
                                 @endif
                             </td>
-                            <td>{{ $m->empresa_id }}</td>
+                            <td>
+                                @foreach($empresas as $e)
+                                    @if($m->empresa_id == $e->id)
+                                        {{ $e->razaoSocial }}
+                                    @endif
+                                @endforeach
+                            </td>
                             <td>{{ $m->valor }}</td>
                             <td>
                                 <a href="movimentos/{{ $m->id }}/edit" class="btn btn-outline-info">Editar</a>

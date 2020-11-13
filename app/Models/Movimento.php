@@ -14,4 +14,5 @@ class Movimento extends Model
         'empresa_id',
         'valor'
     ];
+
 }
